@@ -1,2 +1,2 @@
 # EmpressEngineDX12
- Empress Engine, DX12 Engine with Rasterization and Ray Tracing
+ (IDEA - Not Started) Empress Engine, DX12 Engine with Rasterization and Ray Tracing
