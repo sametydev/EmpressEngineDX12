@@ -11,6 +11,8 @@ public:
 
 	void CheckDXDebug();
 	void CheckMSAASupport();
+	void InitCmdObjects();
+	void CreateSwapChain();
 
 protected:
 	ComPtr<IDXGIAdapter> p_warpAdapter;
@@ -18,6 +20,10 @@ protected:
 	ComPtr<ID3D12Device> p_d3dDevice;
 
 	ComPtr<ID3D12Fence1> p_d3dFence;
+
+	ComPtr<ID3D12CommandQueue> p_commandQueue;
+	ComPtr<ID3D12CommandAllocator> p_commandListAlloc;
+	ComPtr<ID3D12GraphicsCommandList> p_commandList;
 
 private:
 	UINT rtvDescSize, dsvDescSize, cbvDescSize;

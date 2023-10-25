@@ -31,6 +31,8 @@ bool CD3D12App::InitD3D()
 
 	CheckMSAASupport();
 
+	InitCmdObjects();
+
 	return _HR == S_OK;
 }
 
@@ -56,4 +58,27 @@ void CD3D12App::CheckMSAASupport()
 	HR(p_d3dDevice->CheckFeatureSupport(D3D12_FEATURE_MULTISAMPLE_QUALITY_LEVELS, &msaaQualityLevels, sizeof(msaaQualityLevels)));
 
 	assert(msaaQualityLevels.NumQualityLevels > 0 && "[Empress Engine] Problem on MSAA Level <DirectX_12>");
+}
+
+void CD3D12App::InitCmdObjects()
+{
+	D3D12_COMMAND_QUEUE_DESC qDesc{};
+	qDesc.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
+	qDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
+
+	HRESULT _hr;
+	_hr = p_d3dDevice->CreateCommandQueue(&qDesc, IID_PPV_ARGS(p_commandQueue.GetAddressOf()));
+	HR(_hr);
+
+	_hr = p_d3dDevice->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT, IID_PPV_ARGS(p_commandListAlloc.GetAddressOf()));
+	HR(_hr);
+
+	_hr = p_d3dDevice->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, p_commandListAlloc.Get(), nullptr, IID_PPV_ARGS(p_commandList.GetAddressOf()));
+	HR(_hr);
+
+	p_commandList->Close();
+}
+
+void CD3D12App::CreateSwapChain()
+{
 }
