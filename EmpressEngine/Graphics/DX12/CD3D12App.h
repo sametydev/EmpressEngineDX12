@@ -14,6 +14,11 @@ public:
 	void InitCmdObjects();
 	void CreateSwapChain();
 
+	void SetWidthAndHeight(float w, float h) {
+		this->width = w;
+		this->height = h;
+	}
+
 protected:
 	ComPtr<IDXGIAdapter> p_warpAdapter;
 	ComPtr<IDXGIFactory4> p_dxgiFactory4;
@@ -24,6 +29,10 @@ protected:
 	ComPtr<ID3D12CommandQueue> p_commandQueue;
 	ComPtr<ID3D12CommandAllocator> p_commandListAlloc;
 	ComPtr<ID3D12GraphicsCommandList> p_commandList;
+
+	ComPtr<IDXGISwapChain4> p_swapChain;
+
+	float width, height;
 
 private:
 	UINT rtvDescSize, dsvDescSize, cbvDescSize;
