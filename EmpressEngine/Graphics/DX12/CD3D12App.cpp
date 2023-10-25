@@ -29,6 +29,7 @@ bool CD3D12App::InitD3D()
 
 	cbvDescSize = p_d3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
+	CheckMSAASupport();
 
 	return _HR == S_OK;
 }
@@ -42,4 +43,17 @@ void CD3D12App::CheckDXDebug()
 		debugLayer->EnableDebugLayer();
 	}
 #endif
+}
+
+void CD3D12App::CheckMSAASupport()
+{
+	D3D12_FEATURE_DATA_MULTISAMPLE_QUALITY_LEVELS msaaQualityLevels{};
+	msaaQualityLevels.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	msaaQualityLevels.SampleCount = 4;
+	msaaQualityLevels.Flags = D3D12_MULTISAMPLE_QUALITY_LEVELS_FLAG_NONE;
+	msaaQualityLevels.NumQualityLevels = NULL;
+
+	HR(p_d3dDevice->CheckFeatureSupport(D3D12_FEATURE_MULTISAMPLE_QUALITY_LEVELS, &msaaQualityLevels, sizeof(msaaQualityLevels)));
+
+	assert(msaaQualityLevels.NumQualityLevels > 0 && "[Empress Engine] Problem on MSAA Level <DirectX_12>");
 }

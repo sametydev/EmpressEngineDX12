@@ -10,6 +10,7 @@ public:
 	bool InitD3D();
 
 	void CheckDXDebug();
+	void CheckMSAASupport();
 
 protected:
 	ComPtr<IDXGIAdapter> p_warpAdapter;
