@@ -19,6 +19,17 @@ bool CD3D12App::InitD3D()
 
 		HR(D3D12CreateDevice(p_warpAdapter.Get(), D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&p_d3dDevice)));
 	}
+	
+
+	HR(p_d3dDevice->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&p_d3dFence)));
+
+	rtvDescSize = p_d3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_RTV);
+
+	dsvDescSize = p_d3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_DSV);
+
+	cbvDescSize = p_d3dDevice->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+
+
 	return _HR == S_OK;
 }
 

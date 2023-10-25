@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CD3D12App.cpp" />
+    <ClCompile Include="Graphics\DX12\CD3D12App.cpp" />
+    <ClCompile Include="Game\CTimer.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CD3D12App.h" />
+    <ClInclude Include="Graphics\DX12\CD3D12App.h" />
+    <ClInclude Include="Game\CTimer.h" />
     <ClInclude Include="DXConfig.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

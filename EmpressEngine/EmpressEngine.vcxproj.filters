@@ -18,7 +18,10 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CD3D12App.cpp">
+    <ClCompile Include="Graphics\DX12\CD3D12App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -26,7 +29,10 @@
     <ClInclude Include="DXConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CD3D12App.h">
+    <ClInclude Include="Graphics\DX12\CD3D12App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CTimer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
